@@ -1,6 +1,7 @@
 package com.knock.bmt.admin.aggregate.member.application.port.`in`.data.`in`
 
 import com.knock.bmt.admin.aggregate.member.domain.Member
+import com.knock.bmt.common.enums.UserRoleType
 
 class SignUpRequest(
     val name: String,
@@ -12,7 +13,8 @@ class SignUpRequest(
         return Member(
             name = name,
             email = email,
-            password = password
+            password = password,
+            userRoleType = UserRoleType.GUEST
         )
     }
 }
