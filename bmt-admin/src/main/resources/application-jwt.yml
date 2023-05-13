@@ -1,0 +1,5 @@
+jwt:
+  access-secret: eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4Mzk2MDMzMCwiaWF0IjoxNjgzOTYwMzMwfQ.RjOdO_RS5HvDB5IQn7u4suzmp8ueaf26RJQMEEuWfsM  # knockknockbemeantto
+  refresh-secret: eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4Mzk2MDMzMCwiaWF0IjoxNjgzOTYwMzMwfQ.RjOdO_RS5HvDB5IQn7u4suzmp8ueaf26RJQMEEuWfsM # knockknockbemeantto
+  access-token-validity-in-seconds: 86400 # 24hours
+  refresh-token-validity-in-seconds: 2592000 # 1months

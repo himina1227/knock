@@ -3,19 +3,22 @@ spring:
     name: member-admin
   profiles:
     active: local
+    include:
+      - jwt
   h2:
     console:
       enabled: true
       path: /h2-console
   datasource:
     hikari:
-      jdbc-url: jdbc:h2:mem:member-admin
+      jdbc-url: jdbc:h2:mem:member-admin;MODE=MYSQL
       username: sa
       password:
       driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MariaDB106Dialect
     properties:
       hibernate:
         show_sql: true

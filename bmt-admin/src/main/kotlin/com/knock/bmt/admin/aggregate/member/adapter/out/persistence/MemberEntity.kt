@@ -1,5 +1,6 @@
 package com.knock.bmt.admin.aggregate.member.adapter.out.persistence
 
+import com.knock.bmt.common.enums.UserRoleType
 import jakarta.persistence.*
 
 @Entity
@@ -8,18 +9,18 @@ class MemberEntity (
     id: Long?,
     email: String,
     name: String,
+    userRoleType: UserRoleType,
     password: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = id // 아이디
 
-    @Column
     val email: String = email // 이메일
 
-    @Column
     val name: String = name // 이름
 
-    @Column
+    val userRoleType: UserRoleType = userRoleType // 권한
+
     var password: String = password // 비밀번호
 }

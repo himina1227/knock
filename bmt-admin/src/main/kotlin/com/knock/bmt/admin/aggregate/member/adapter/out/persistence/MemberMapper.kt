@@ -9,6 +9,7 @@ class MemberMapper {
         domain.id,
         domain.email,
         domain.name,
+        domain.userRoleType,
         domain.password
     )
 
@@ -16,6 +17,7 @@ class MemberMapper {
         entity.id,
         entity.email,
         entity.name,
+        entity.userRoleType,
         entity.password
     )
 }
