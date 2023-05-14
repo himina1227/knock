@@ -23,3 +23,19 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: stage
+---
+spring:
+  config:
+    activate:
+      on-profile: prod

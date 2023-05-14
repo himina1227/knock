@@ -7,7 +7,6 @@ import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.`in`.Sign
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.out.SignInResponse
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.out.SignUpResponse
 import com.knock.bmt.common.response.DefaultResponse
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
