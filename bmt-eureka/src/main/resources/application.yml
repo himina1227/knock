@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: bmt-eureka
+  profiles:
+    active: local
+
+server:
+  port: 8000
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false # ?????? ??? ???? ??? ????? ??? ??????? ??
+    disable-delta: true # default false -> ?? ? ??? ??? ???? ? ? ??
+    service-url:
+      defaultZone: http://127.0.0.1:8000/eureka
+    instance:
+      prefer-ip-address: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: stage
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
