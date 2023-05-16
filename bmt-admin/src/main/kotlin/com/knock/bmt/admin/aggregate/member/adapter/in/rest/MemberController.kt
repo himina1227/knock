@@ -24,4 +24,9 @@ class MemberController(
     fun signIn(@RequestBody request: SignInRequest): DefaultResponse<SignInResponse> {
         return DefaultResponse.successWithData(signInUseCase.signIn(request))
     }
+
+//    @GetMapping("/index")
+//    fun test(): String {
+//        return configServerConfig.username
+//    }
 }

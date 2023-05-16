@@ -1,1 +1,13 @@
-
+spring:
+  application:
+    name: member-admin
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MariaDB106Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
