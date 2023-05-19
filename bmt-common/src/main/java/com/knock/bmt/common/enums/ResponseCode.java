@@ -6,9 +6,9 @@ import lombok.Getter;
 public enum ResponseCode {
     SUCCESS("0000", "성공");
 
-    private String status;
+    private final String status;
 
-    private String message;
+    private final String message;
 
     ResponseCode(String status, String message) {
         this.status = status;
