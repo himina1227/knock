@@ -11,4 +11,7 @@ class ConfigServerConfig {
 
     @Value("\${who.am.i}")
     val username: String? = null
+
+    @Value("\${who.am.year}")
+    val year: String? = null
 }
