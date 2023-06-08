@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException
 import jakarta.servlet.ServletRequest
 import jakarta.servlet.ServletResponse
 import jakarta.servlet.http.HttpServletRequest
+import org.springframework.context.annotation.Configuration
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.util.StringUtils
 import org.springframework.web.filter.GenericFilterBean
@@ -23,6 +24,4 @@ class JwtAuthenticationFilter(
         }
         chain.doFilter(request, response)
     }
-
-
 }

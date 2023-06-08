@@ -10,7 +10,6 @@ import java.util.*
 import java.util.stream.Collectors
 
 class PrincipalDetails : UserDetails, CredentialsContainer {
-    private val serviceType: String? = null
     private var role: String? = null
     val userId: Long? = null
     val loginId: String? = null

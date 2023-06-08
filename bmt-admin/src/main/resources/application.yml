@@ -30,7 +30,7 @@ spring:
 
 management:
   endpoints:
-    enabled-by-default: false # Spring Actuator는 기본적으로 all disable 상태에서 include 하여 화이트 리스트 형태로 운영
+    enabled-by-default: false # Spring Actuator 기본적으로 all disable 상태에서 include 하여 화이트 리스트 형태로 운영
     web:
       exposure:
         include: ["env", "refresh", "health"]
