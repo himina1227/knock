@@ -10,7 +10,8 @@ class MemberEntity (
     email: String,
     name: String,
     userRoleType: UserRoleType,
-    password: String
+    password: String,
+    disabled: Boolean
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +24,6 @@ class MemberEntity (
     val userRoleType: UserRoleType = userRoleType // 권한
 
     var password: String = password // 비밀번호
+
+    var disabled: Boolean = disabled
 }

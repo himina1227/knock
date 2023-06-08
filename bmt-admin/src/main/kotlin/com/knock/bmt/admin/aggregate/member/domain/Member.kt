@@ -7,5 +7,6 @@ data class Member (
     val email: String,
     val name: String,
     val userRoleType: UserRoleType,
-    val password: String
+    val password: String,
+    val disabled: Boolean
 )

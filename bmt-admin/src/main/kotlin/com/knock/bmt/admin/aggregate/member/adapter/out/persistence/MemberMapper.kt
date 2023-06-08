@@ -10,7 +10,8 @@ class MemberMapper {
         domain.email,
         domain.name,
         domain.userRoleType,
-        domain.password
+        domain.password,
+        domain.disabled
     )
 
     fun toDomain(entity: MemberEntity) = Member(
@@ -18,6 +19,7 @@ class MemberMapper {
         entity.email,
         entity.name,
         entity.userRoleType,
-        entity.password
+        entity.password,
+        entity.disabled
     )
 }
