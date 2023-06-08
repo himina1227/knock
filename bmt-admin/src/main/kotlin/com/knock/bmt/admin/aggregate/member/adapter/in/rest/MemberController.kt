@@ -6,7 +6,10 @@ import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.`in`.Sign
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.`in`.SignUpRequest
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.out.SignInResponse
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.out.SignUpResponse
+import com.knock.bmt.admin.support.PrincipalDetails
 import com.knock.bmt.common.response.DefaultResponse
+import org.hibernate.annotations.Parameter
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -23,5 +26,10 @@ class MemberController(
     @PostMapping("/sign-in")
     fun signIn(@RequestBody request: SignInRequest): DefaultResponse<SignInResponse> {
         return DefaultResponse.successWithData(signInUseCase.signIn(request))
+    }
+
+    @DeleteMapping("/leave")
+    fun leave(@AuthenticationPrincipal principalDetails: PrincipalDetails): DefaultResponse<Void> {
+        return DefaultResponse.success();
     }
 }

@@ -44,6 +44,10 @@ public class DefaultResponse<T> {
 
     }
 
+    public static <T> DefaultResponse<T> success() {
+        return new DefaultResponse<>(ResponseCode.SUCCESS);
+    }
+
     @Getter
     @NoArgsConstructor
     static class PagingModel<T> {
