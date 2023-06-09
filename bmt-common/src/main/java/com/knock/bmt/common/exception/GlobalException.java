@@ -34,6 +34,11 @@ public class GlobalException extends RuntimeException {
         status = "9999";
     }
 
+    public GlobalException(String message, ResponseCode responseCode) {
+        super(message);
+        this.status = responseCode.getStatus();
+    }
+
     public GlobalException(Throwable cause) {
         super(cause);
         status = "9999";

@@ -1,5 +1,6 @@
 package com.knock.bmt.admin.aggregate.member.adapter.out.persistence
 
+import com.knock.bmt.admin.aggregate.member.domain.vo.Password
 import com.knock.bmt.common.enums.UserRoleType
 import jakarta.persistence.*
 
@@ -10,7 +11,7 @@ class MemberEntity (
     email: String,
     name: String,
     userRoleType: UserRoleType,
-    password: String,
+    password: Password,
     disabled: Boolean
 ) {
     @Id
@@ -23,7 +24,8 @@ class MemberEntity (
 
     val userRoleType: UserRoleType = userRoleType // 권한
 
-    var password: String = password // 비밀번호
+    @Embedded
+    var password: Password = password // 비밀번호
 
     var disabled: Boolean = disabled
 

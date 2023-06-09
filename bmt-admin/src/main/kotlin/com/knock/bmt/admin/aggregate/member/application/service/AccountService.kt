@@ -10,29 +10,31 @@ import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.out.SignU
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.LeavePort
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.LoadAccountPort
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.SignUpPort
+import com.knock.bmt.admin.aggregate.member.domain.vo.Password
 import com.knock.bmt.common.exception.GlobalException
 import jakarta.transaction.Transactional
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Transactional
 @Service
 class AccountService(
-    val signUpPort: SignUpPort,
-    val loadAccountPort: LoadAccountPort,
-    val leavePort: LeavePort
+    private val signUpPort: SignUpPort,
+    private val loadAccountPort: LoadAccountPort,
+    private val leavePort: LeavePort,
+    private val passwordEncoder: PasswordEncoder
 ) : SignUpUseCase, SignInUseCase, LeaveUseCase {
 
     override fun signUp(request: SignUpRequest): SignUpResponse {
-        val member = signUpPort.signUp(request.toDomain())
+        val password = Password(passwordEncoder, request.password)
+        val member = signUpPort.signUp(request.toDomain(password))
         return SignUpResponse.of(member)
     }
 
     override fun signIn(request: SignInRequest): SignInResponse {
         val member = loadAccountPort.loadAccountByEmail(request.email)
-        if (request.password != member.password) {
-            throw NotFoundException();
-        }
+        member.password.match(passwordEncoder, request.password)
         return SignInResponse.of(member)
     }
 
