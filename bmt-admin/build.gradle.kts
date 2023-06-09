@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
     kotlin("plugin.jpa") version "1.7.22"
+    kotlin("kapt") version "1.7.22"
 }
 
 group = "com.knock"
@@ -40,6 +41,9 @@ dependencies {
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    // QueryDsl
+    implementation(group = "com.querydsl", name = "querydsl-jpa", classifier = "jakarta")
+    kapt(group = "com.querydsl", name = "querydsl-apt", classifier = "jakarta")
 
     implementation(project(":bmt-common"))
 }

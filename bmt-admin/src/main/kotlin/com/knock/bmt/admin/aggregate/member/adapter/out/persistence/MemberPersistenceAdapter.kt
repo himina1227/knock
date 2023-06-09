@@ -1,5 +1,6 @@
 package com.knock.bmt.admin.aggregate.member.adapter.out.persistence
 
+import com.knock.bmt.admin.aggregate.member.application.port.out.repository.LeavePort
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.LoadAccountPort
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.SignUpPort
 import com.knock.bmt.admin.aggregate.member.domain.Member
@@ -11,7 +12,9 @@ class MemberPersistenceAdapter(
     private val repository: MemberRepository,
     private val mapper: MemberMapper
 ) : SignUpPort,
-    LoadAccountPort {
+    LoadAccountPort,
+    LeavePort {
+
     override fun signUp(member: Member): Member {
         val memberEntity = mapper.toEntity(member)
         repository.save(memberEntity)
@@ -19,7 +22,20 @@ class MemberPersistenceAdapter(
     }
 
     override fun loadAccountByEmail(email: String): Member {
-        val memberEntity = repository.findByEmail(email).orElseThrow() { throw NotFoundException() }
+        val memberEntity = getEntityByEmail(email)
         return mapper.toDomain(memberEntity)
+    }
+
+    override fun leave(id: Long) {
+        val memberEntity = getEntityById(id)
+        memberEntity.disabled()
+    }
+
+    fun getEntityByEmail(email: String): MemberEntity {
+        return repository.findByEmail(email).orElseThrow() { throw NotFoundException() }
+    }
+
+    fun getEntityById(id: Long): MemberEntity {
+        return repository.findById(id).orElseThrow() { throw NotFoundException() }
     }
 }

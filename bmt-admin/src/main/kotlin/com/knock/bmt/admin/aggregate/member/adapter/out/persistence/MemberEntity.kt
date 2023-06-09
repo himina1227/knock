@@ -26,4 +26,9 @@ class MemberEntity (
     var password: String = password // 비밀번호
 
     var disabled: Boolean = disabled
+
+
+    fun disabled() {
+        this.disabled = true
+    }
 }

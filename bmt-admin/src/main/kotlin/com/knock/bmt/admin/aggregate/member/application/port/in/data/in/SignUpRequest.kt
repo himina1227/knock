@@ -11,10 +11,12 @@ class SignUpRequest(
 
     fun toDomain(): Member {
         return Member(
+            id = null,
             name = name,
             email = email,
             password = password,
-            userRoleType = UserRoleType.GUEST
+            userRoleType = UserRoleType.GUEST,
+            disabled = false
         )
     }
 }
