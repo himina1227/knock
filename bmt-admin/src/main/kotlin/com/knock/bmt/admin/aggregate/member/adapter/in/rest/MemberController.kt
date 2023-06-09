@@ -1,5 +1,6 @@
 package com.knock.bmt.admin.aggregate.member.adapter.`in`.rest
 
+import com.knock.bmt.admin.aggregate.member.application.port.`in`.LeaveUseCase
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.SignInUseCase
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.SignUpUseCase
 import com.knock.bmt.admin.aggregate.member.application.port.`in`.data.`in`.SignInRequest
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/members")
 class MemberController(
     val signUpUseCase: SignUpUseCase,
-    val signInUseCase: SignInUseCase
+    val signInUseCase: SignInUseCase,
+    val leaveUseCase: LeaveUseCase
 ) {
     @PostMapping("/sign-up")
     fun signUp(@RequestBody request: SignUpRequest): DefaultResponse<SignUpResponse> {
@@ -30,6 +32,7 @@ class MemberController(
 
     @DeleteMapping("/leave")
     fun leave(@AuthenticationPrincipal principalDetails: PrincipalDetails): DefaultResponse<Void> {
+        leaveUseCase.leave(principalDetails.userId)
         return DefaultResponse.success();
     }
 }

@@ -9,17 +9,17 @@ import org.springframework.util.Assert
 import java.util.*
 import java.util.stream.Collectors
 
-class PrincipalDetails : UserDetails, CredentialsContainer {
-    private var role: String? = null
-    val userId: Long? = null
-    val loginId: String? = null
+class PrincipalDetails(
+    private val role: String,
+    val userId: Long,
+    val loginId: String) : UserDetails, CredentialsContainer {
 
     override fun getPassword(): String? {
         return null
     }
 
     override fun getUsername(): String {
-        return loginId!!
+        return loginId
     }
 
     override fun isAccountNonExpired(): Boolean {
@@ -40,7 +40,7 @@ class PrincipalDetails : UserDetails, CredentialsContainer {
 
     override fun eraseCredentials() {}
     override fun getAuthorities(): Collection<GrantedAuthority> {
-        return Arrays.stream(role!!.split(",".toRegex())
+        return Arrays.stream(role.split(",".toRegex())
             .dropLastWhile { it.isEmpty() }
             .toTypedArray())
             .map { role: String? ->
@@ -53,7 +53,7 @@ class PrincipalDetails : UserDetails, CredentialsContainer {
 
     val parsedUserId: Long
         get() {
-            return userId!!.toLong()
+            return userId.toLong()
         }
     val userRoleType: UserRoleType
         get() {
