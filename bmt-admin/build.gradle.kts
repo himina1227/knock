@@ -35,16 +35,19 @@ dependencies {
     // /actuator/refresh 및 상태관리 호출하기 위해
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-security")
+
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
-    runtimeOnly("com.h2database:h2")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     // QueryDsl
     implementation(group = "com.querydsl", name = "querydsl-jpa", classifier = "jakarta")
     kapt(group = "com.querydsl", name = "querydsl-apt", classifier = "jakarta")
+    // password
+    implementation("org.passay:passay:1.3.1")
 
+    runtimeOnly("com.h2database:h2")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation(project(":bmt-common"))
 }
 

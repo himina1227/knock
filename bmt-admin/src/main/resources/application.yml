@@ -27,7 +27,8 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-
+        default_batch_fetch_size: 100
+    open-in-view: false
 management:
   endpoints:
     enabled-by-default: false # Spring Actuator 기본적으로 all disable 상태에서 include 하여 화이트 리스트 형태로 운영

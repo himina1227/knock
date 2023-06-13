@@ -1,16 +1,17 @@
 package com.knock.bmt.admin.aggregate.member.adapter.out.persistence
 
 import com.knock.bmt.admin.aggregate.member.domain.Member
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
 class MemberMapper {
-    fun toEntity(domain: Member) = MemberEntity(
+    fun toEntity(domain: Member, passwordEncoder: PasswordEncoder) = MemberEntity(
         domain.id,
         domain.email,
         domain.name,
         domain.userRoleType,
-        domain.password,
+        domain.password.toEncode(passwordEncoder),
         domain.disabled
     )
 
