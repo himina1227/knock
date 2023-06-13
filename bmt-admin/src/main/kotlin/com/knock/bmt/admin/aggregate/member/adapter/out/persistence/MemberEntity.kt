@@ -24,7 +24,6 @@ class MemberEntity (
 
     val userRoleType: UserRoleType = userRoleType // 권한
 
-    @Embedded
     var password: Password = password // 비밀번호
 
     var disabled: Boolean = disabled

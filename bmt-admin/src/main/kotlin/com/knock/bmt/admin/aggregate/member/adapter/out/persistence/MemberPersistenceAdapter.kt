@@ -5,18 +5,20 @@ import com.knock.bmt.admin.aggregate.member.application.port.out.repository.Load
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.SignUpPort
 import com.knock.bmt.admin.aggregate.member.domain.Member
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Repository
 
 @Repository
 class MemberPersistenceAdapter(
     private val repository: MemberRepository,
-    private val mapper: MemberMapper
+    private val mapper: MemberMapper,
+    private val passwordEncoder: PasswordEncoder
 ) : SignUpPort,
     LoadAccountPort,
     LeavePort {
 
     override fun signUp(member: Member): Member {
-        val memberEntity = mapper.toEntity(member)
+        val memberEntity = mapper.toEntity(member, passwordEncoder)
         repository.save(memberEntity)
         return mapper.toDomain(memberEntity)
     }
@@ -29,6 +31,10 @@ class MemberPersistenceAdapter(
     override fun leave(id: Long) {
         val memberEntity = getEntityById(id)
         memberEntity.disabled()
+    }
+
+    override fun duplicateByEmail(email: String): Boolean {
+        return repository.existsByEmail(email)
     }
 
     fun getEntityByEmail(email: String): MemberEntity {

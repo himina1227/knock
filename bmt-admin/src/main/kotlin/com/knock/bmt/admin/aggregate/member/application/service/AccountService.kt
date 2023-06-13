@@ -11,9 +11,7 @@ import com.knock.bmt.admin.aggregate.member.application.port.out.repository.Leav
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.LoadAccountPort
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.SignUpPort
 import com.knock.bmt.admin.aggregate.member.domain.vo.Password
-import com.knock.bmt.common.exception.GlobalException
 import jakarta.transaction.Transactional
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
@@ -27,14 +25,12 @@ class AccountService(
 ) : SignUpUseCase, SignInUseCase, LeaveUseCase {
 
     override fun signUp(request: SignUpRequest): SignUpResponse {
-        val password = Password(passwordEncoder, request.password)
-        val member = signUpPort.signUp(request.toDomain(password))
+        val member = signUpPort.signUp(request.toDomain())
         return SignUpResponse.of(member)
     }
 
     override fun signIn(request: SignInRequest): SignInResponse {
         val member = loadAccountPort.loadAccountByEmail(request.email)
-        member.password.match(passwordEncoder, request.password)
         return SignInResponse.of(member)
     }
 

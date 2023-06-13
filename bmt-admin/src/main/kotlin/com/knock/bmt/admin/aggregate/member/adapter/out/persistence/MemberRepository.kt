@@ -7,4 +7,6 @@ import java.util.*
 @Repository
 interface MemberRepository : JpaRepository<MemberEntity, Long> {
     fun findByEmail(email: String): Optional<MemberEntity>
+
+    fun existsByEmail(email: String): Boolean
 }

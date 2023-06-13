@@ -2,17 +2,14 @@ package com.knock.bmt.admin.aggregate.member.domain
 
 import com.knock.bmt.admin.aggregate.member.domain.vo.Password
 import com.knock.bmt.common.enums.UserRoleType
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
 
-class Member (
-    id: Long?,
+class Member(
+    id: Long? = null,
     email: String,
     name: String,
-    userRoleType: UserRoleType,
+    userRoleType: UserRoleType = UserRoleType.ADMIN,
     password: Password,
-    disabled: Boolean
+    disabled: Boolean = false
 ) {
     val id: Long? = id // 아이디
 
@@ -22,8 +19,7 @@ class Member (
 
     val userRoleType: UserRoleType = userRoleType // 권한
 
-    var password: Password = password // 비밀번호
+    val password: Password = password // 비밀번호
 
     var disabled: Boolean = disabled
-
 }

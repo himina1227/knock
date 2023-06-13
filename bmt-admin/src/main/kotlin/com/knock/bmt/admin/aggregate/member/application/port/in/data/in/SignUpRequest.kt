@@ -9,12 +9,12 @@ class SignUpRequest(
     val email: String,
     val password: String
 ) {
-    fun toDomain(password: Password): Member {
+    fun toDomain(): Member {
         return Member(
             id = null,
             name = name,
             email = email,
-            password = password,
+            password = Password(this.password),
             userRoleType = UserRoleType.GUEST,
             disabled = false
         )
