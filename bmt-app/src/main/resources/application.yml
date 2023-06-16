@@ -1,0 +1,62 @@
+server:
+  port: 9998
+spring:
+  application:
+    name: member-app
+  profiles:
+    active: local
+    include:
+      - jwt
+  config:
+    import: optional:configserver:http://localhost:8888 # configserver와 통신 실패시 서버 실행을 멈추지 않으려면 optional 필수
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:member-app;MODE=MYSQL
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.MariaDB106Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+    open-in-view: false
+management:
+  endpoints:
+    enabled-by-default: false # Spring Actuator 기본적으로 all disable 상태에서 include 하여 화이트 리스트 형태로 운영
+    web:
+      exposure:
+        include: ["env", "refresh", "health"]
+  #      base-path: /mng
+  #      path-mapping:
+  #        health: health-check
+  endpoint:
+    env:
+      enabled: true
+    health:
+      enabled: true
+    refresh:
+      enabled: true
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: stage
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
