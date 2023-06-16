@@ -4,6 +4,8 @@ import com.knock.bmt.admin.aggregate.member.application.port.out.repository.Leav
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.LoadAccountPort
 import com.knock.bmt.admin.aggregate.member.application.port.out.repository.SignUpPort
 import com.knock.bmt.admin.aggregate.member.domain.Member
+import com.knock.bmt.common.enums.ResponseCode
+import com.knock.bmt.common.exception.GlobalException
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Repository
@@ -18,6 +20,7 @@ class MemberPersistenceAdapter(
     LeavePort {
 
     override fun signUp(member: Member): Member {
+        if (duplicateByEmail(member.email)) throw GlobalException(ResponseCode.DUPLICATED_EMAIL)
         val memberEntity = mapper.toEntity(member, passwordEncoder)
         repository.save(memberEntity)
         return mapper.toDomain(memberEntity)

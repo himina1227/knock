@@ -40,11 +40,17 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
     // QueryDsl
     implementation(group = "com.querydsl", name = "querydsl-jpa", classifier = "jakarta")
     kapt(group = "com.querydsl", name = "querydsl-apt", classifier = "jakarta")
+
     // password
     implementation("org.passay:passay:1.3.1")
+
+    // Mock MVc (RestAssured)
+    testImplementation("io.rest-assured:rest-assured")
+    testImplementation("io.rest-assured:spring-mock-mvc")
 
     runtimeOnly("com.h2database:h2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

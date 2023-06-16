@@ -1,9 +1,9 @@
 package com.knock.bmt.common.exception;
 
 import com.knock.bmt.common.enums.ResponseCode;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 
+@Getter
 public class GlobalException extends RuntimeException {
 
     private String status;
