@@ -1,4 +1,4 @@
-package com.knock.bmt.admin.support
+package com.knock.bmt.app.support
 
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService

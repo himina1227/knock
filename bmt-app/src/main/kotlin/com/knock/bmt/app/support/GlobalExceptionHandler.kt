@@ -1,4 +1,4 @@
-package com.knock.bmt.admin.support
+package com.knock.bmt.app.support
 
 import com.knock.bmt.common.enums.ResponseCode
 import com.knock.bmt.common.exception.GlobalException

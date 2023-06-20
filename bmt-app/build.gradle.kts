@@ -30,6 +30,13 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.cloud:spring-cloud-starter-config")
+
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+    // validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     // https://www.baeldung.com/kotlin/kotlin-logging-library
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
 

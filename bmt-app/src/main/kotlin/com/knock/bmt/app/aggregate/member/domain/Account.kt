@@ -1,29 +1,34 @@
-package com.knock.bmt.app.aggregate.member.adapter.out.persistence
+package com.knock.bmt.app.aggregate.member.domain
 
 import com.knock.bmt.common.enums.UserRoleType
-import jakarta.persistence.*
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy
 import java.time.LocalDateTime
 
-@Entity(name = "member")
-class AccountEntity(
+class Account(
     id: Long? = null,
     loginId: String? = null,
     password: String? = null,
+    passwordUpdatedAt: LocalDateTime? = null,
     userRoleType: UserRoleType = UserRoleType.GUEST,
     refreshToken: String? = null,
     temporarily: Boolean = false,
     kakaoId: String? = null,
+    lastSigninSocialService: String? = null,
     name: String? = null,
+    birthday: String? = null,
+    gender: String? = null,
+    mobileNum: String? = null,
+    fcmToken: String? = null,
+    fcmTokenUpdateAt: LocalDateTime? = null,
     disabled: Boolean = false,
+    disabledReason: String? = null
 ) {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = id
 
     val loginId: String? = loginId
 
     val password: String? = password
+
+    val passwordUpdatedAt: LocalDateTime? = passwordUpdatedAt
 
     val userRoleType: UserRoleType = userRoleType
 
@@ -33,7 +38,18 @@ class AccountEntity(
 
     val kakaoId: String? = kakaoId
 
+    val lastSigninSocialService: String? = lastSigninSocialService
+
     val name: String? = name
+
+    val birthday: String? = birthday
+
+    val gender: String? = gender
+
+    val mobileNum: String? = mobileNum
+
+    val fcmToken: String? = fcmToken
+
 
     val disabled: Boolean = disabled
 }

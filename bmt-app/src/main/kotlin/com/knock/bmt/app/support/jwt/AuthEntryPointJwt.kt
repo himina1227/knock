@@ -1,4 +1,4 @@
-package com.knock.bmt.admin.support.jwt
+package com.knock.bmt.app.support.jwt
 
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

@@ -1,6 +1,6 @@
-package com.knock.bmt.admin.support.jwt
+package com.knock.bmt.app.support.jwt
 
-import com.knock.bmt.admin.support.PrincipalDetails
+import com.knock.bmt.app.support.PrincipalDetails
 import io.jsonwebtoken.*
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
