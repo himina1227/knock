@@ -1,7 +1,7 @@
-package com.knock.bmt.admin.config
+package com.knock.bmt.app.config
 
-import com.knock.bmt.admin.support.jwt.JwtAuthenticationFilter
-import com.knock.bmt.admin.support.jwt.JwtTokenProvider
+import com.knock.bmt.app.support.jwt.JwtAuthenticationFilter
+import com.knock.bmt.app.support.jwt.JwtTokenProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile

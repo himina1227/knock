@@ -1,8 +1,8 @@
 server:
-  port: 9999
+  port: 9998
 spring:
   application:
-    name: member-admin
+    name: member-app
   profiles:
     active: local
     include:
@@ -15,7 +15,7 @@ spring:
       path: /h2-console
   datasource:
     hikari:
-      jdbc-url: jdbc:h2:mem:member-admin;MODE=MYSQL
+      jdbc-url: jdbc:h2:mem:member-app;MODE=MYSQL
       username: sa
       password:
       driver-class-name: org.h2.Driver
@@ -35,9 +35,9 @@ management:
     web:
       exposure:
         include: ["env", "refresh", "health"]
-#      base-path: /mng
-#      path-mapping:
-#        health: health-check
+  #      base-path: /mng
+  #      path-mapping:
+  #        health: health-check
   endpoint:
     env:
       enabled: true
@@ -62,11 +62,6 @@ integration:
       fail-uri: http://localhost:8081/app/pass/fail
   ip-location:
     base-url: https://api.iplocation.net
-
-api:
-  clientId: "client123"
-  url: "https://api.url.com"
-  key: "api-access-key"
 ---
 spring:
   config:

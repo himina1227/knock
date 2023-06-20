@@ -1,0 +1,6 @@
+# https://www.javainuse.com/jwtgenerator
+jwt:
+  access-secret: eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4Mzk2MDMzMCwiaWF0IjoxNjgzOTYwMzMwfQ # knockknockbemeantto
+  refresh-secret: eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4Mzk2MDMzMCwiaWF0IjoxNjgzOTYwMzMwfQ # knockknockbemeantto
+  access-token-validity-in-seconds: 86400 # 24hours
+  refresh-token-validity-in-seconds: 2592000 # 1months
