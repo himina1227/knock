@@ -1,6 +1,6 @@
 package com.knock.bmt.app.property
 
-import com.knock.bmt.admin.property.PassProperties
+import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.AssertionsForClassTypes
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -17,7 +17,7 @@ class PassPropertiesTest(
 ) {
 
     @Test
-    fun `properties 조회`() {
-        AssertionsForClassTypes.assertThat(passProperties.registration).isEqualTo("api-access-key")
+    fun PassProperties_조회() {
+        assertThat(passProperties.registration.siteCode).isEqualTo("BT251")
     }
 }
