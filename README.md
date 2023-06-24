@@ -6,5 +6,8 @@
 - bmt-app
 - bmt-payment
 - bmt-order
+- bmt-common
+- bmt-eureka
+- bmt-proxy
 ### 기술 스택
 - openJdk(corretto) 17
