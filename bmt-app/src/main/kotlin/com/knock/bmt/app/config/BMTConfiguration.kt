@@ -1,6 +1,5 @@
-package com.knock.bmt.admin.config
+package com.knock.bmt.app.config
 
-import com.knock.bmt.admin.property.ApiConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -11,10 +10,5 @@ class BMTConfiguration {
     @Bean
     fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
-    }
-
-    @Bean
-    fun apiConfiguration(): ApiConfiguration {
-        return ApiConfiguration()
     }
 }
