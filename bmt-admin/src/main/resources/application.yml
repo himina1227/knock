@@ -46,7 +46,6 @@ management:
     refresh:
       enabled: true
 
-# 외부연계 path
 ---
 spring:
   config:
