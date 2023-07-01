@@ -47,26 +47,6 @@ management:
       enabled: true
 
 # 외부연계 path
-integration:
-  pass:
-    registration:
-      site-code: BT251
-      site-password: SnMl8XzZK3jH
-      gubun: encodeData
-      req-seq: REQ_SEQ
-    provider:
-      authorize-uri: https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb
-      redirect-success-uri: http://localhost:8081/app/pass/redirect/success
-      success-uri: http://localhost:8081/app/pass/success
-      redirect-fail-uri: http://localhost:8081/app/pass/redirect/fail
-      fail-uri: http://localhost:8081/app/pass/fail
-  ip-location:
-    base-url: https://api.iplocation.net
-
-api:
-  clientId: "client123"
-  url: "https://api.url.com"
-  key: "api-access-key"
 ---
 spring:
   config:
